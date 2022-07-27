@@ -1,0 +1,4 @@
+ yarn deploy:rinkeby --tags init
+ yarn verify:rinkeby Crea2ors,Crea2orsNFT,Crea2orsManager
+
+ yarn deploy:bsc --tags init

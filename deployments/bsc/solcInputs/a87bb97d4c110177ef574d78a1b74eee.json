@@ -1,0 +1,40 @@
+{
+  "language": "Solidity",
+  "sources": {
+    "contracts/Crea2orsManager.sol": {
+      "content": "// SPDX-License-Identifier: MIT\n// Author: topstardev.703@gmail.com\npragma solidity >=0.8.0 <0.9.0;\n\ninterface ICrea2orsNFT {\n  function transferNFT(\n    uint256 id,\n    uint256 amount,\n    address from,\n    address to\n  ) external;\n\n  function getRoyaltyFee(uint256) external returns (uint256);\n\n  function getRoyaltyAddress(uint256) external returns (address);\n}\n\ninterface ICrea2Crypto {\n  function approve(address spender, uint256 fund) external;\n\n  function balanceOf(address) external returns (uint256);\n\n  function transfer(address, uint256) external;\n\n  function transferFrom(\n    address,\n    address,\n    uint256\n  ) external;\n}\n\ncontract Crea2orsManager {\n  mapping(address => ICrea2orsNFT) public collections;\n  ICrea2Crypto private cr2Contract;\n\n  constructor(address tokenAddress) {\n    cr2Contract = ICrea2Crypto(tokenAddress);\n  }\n\n  // add new collection to nft collection list\n  function addCollection(address newAddress) public {\n    ICrea2orsNFT nftContract = ICrea2orsNFT(newAddress);\n    collections[newAddress] = nftContract;\n  }\n\n  function transferNFT(\n    address collectionAddress,\n    address from,\n    address to,\n    uint256 id,\n    uint256 amount,\n    uint256 fund\n  ) public {\n    require(fund < cr2Contract.balanceOf(msg.sender), \"Insufficient fund of buyer\");\n    uint256 royalty = (fund * collections[collectionAddress].getRoyaltyFee(id)) / 100;\n    // Send fee to contract owner\n    cr2Contract.transferFrom(to, collections[collectionAddress].getRoyaltyAddress(id), royalty);\n    // Send money to seller\n    cr2Contract.transferFrom(to, from, fund - royalty);\n    collections[collectionAddress].transferNFT(id, amount, from, to);\n  }\n}\n"
+    }
+  },
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "storageLayout",
+          "abi",
+          "evm.bytecode",
+          "evm.deployedBytecode",
+          "evm.methodIdentifiers",
+          "metadata",
+          "devdoc",
+          "userdoc",
+          "evm.gasEstimates"
+        ],
+        "": [
+          "ast"
+        ]
+      }
+    },
+    "metadata": {
+      "useLiteralContent": true
+    },
+    "libraries": {
+      "": {
+        "__CACHE_BREAKER__": "0x00000000d41867734bbee4c6863d9255b2b06ac1"
+      }
+    }
+  }
+}

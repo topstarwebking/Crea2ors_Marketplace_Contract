@@ -1,180 +1,93 @@
-Contribution: 2022-04-22 20:00
+## Version
 
-Contribution: 2022-04-22 20:01
+**2.0.0-alpha.1**
 
-Contribution: 2022-04-22 20:02
+## Setting up local development
 
-Contribution: 2022-04-22 20:03
+### Pre-requisites
 
-Contribution: 2022-04-23 20:00
+- [Node.js](https://nodejs.org/en/) version 14.0+ and [yarn](https://yarnpkg.com/) for Javascript environment.
+- [Foundry](https://github.com/gakonst/foundry#installation) for running forge tests.
 
-Contribution: 2022-04-23 20:01
+1. Clone this repository
 
-Contribution: 2022-04-28 20:00
+```bash
+git clone https://github.com/Metadhana-Studio/roosterwars-contracts
+```
 
-Contribution: 2022-05-02 20:00
+2. Install dependencies
 
-Contribution: 2022-05-07 20:00
+```bash
+yarn
+```
 
-Contribution: 2022-05-07 20:01
+3. Set environment variables on the .env file according to .env.example
 
-Contribution: 2022-05-07 20:02
+```bash
+cp .env.example .env
+vim .env
+```
 
-Contribution: 2022-05-07 20:03
+4. Compile Solidity programs
 
-Contribution: 2022-05-13 20:00
+```bash
+yarn compile
+```
 
-Contribution: 2022-05-13 20:01
+### Development
 
-Contribution: 2022-05-13 20:02
+- To run hardhat tests
 
-Contribution: 2022-05-13 20:03
+```bash
+yarn test:hh
+```
 
-Contribution: 2022-05-15 20:00
+- To run forge(foundry) tests
 
-Contribution: 2022-05-19 20:00
+```bash
+yarn test:forge
+```
 
-Contribution: 2022-05-19 20:01
+- To start local blockchain
 
-Contribution: 2022-05-19 20:02
+```bash
+yarn localnode
+```
 
-Contribution: 2022-05-19 20:03
+- To run scripts on Rinkeby test
 
-Contribution: 2022-05-21 20:00
+```bash
+yarn script:rinkeby ./scripts/....
+```
 
-Contribution: 2022-05-21 20:01
+- To run deploy contracts on Rinkeby testnet (uses Hardhat deploy)
 
-Contribution: 2022-05-21 20:02
+```bash
+yarn deploy:rinkeby --tags ....
+```
 
-Contribution: 2022-05-21 20:03
+- To verify contracts on etherscan
 
-Contribution: 2022-05-23 20:00
+```bash
+yarn verify:rinkeby MyTokenContract,MyNFTContract
+```
 
-Contribution: 2022-05-23 20:01
+... see more useful commands in package.json file
 
-Contribution: 2022-05-23 20:02
+## Main Dependencies
 
-Contribution: 2022-05-23 20:03
+Contracts are developed using well-known open-source software for utility libraries and developement tools. You can read more about each of them.
 
-Contribution: 2022-05-24 20:00
+[OpenZeppelin](https://github.com/OpenZeppelin/openzeppelin-contracts)
 
-Contribution: 2022-05-24 20:01
+[Solmate](https://github.com/Rari-Capital/solmate)
 
-Contribution: 2022-05-24 20:02
+[Hardhat](https://github.com/nomiclabs/hardhat)
 
-Contribution: 2022-05-24 20:03
+[hardhat-deploy](https://github.com/wighawag/hardhat-deploy)
 
-Contribution: 2022-05-26 20:00
+[foundry](https://github.com/gakonst/foundry)
 
-Contribution: 2022-05-28 20:00
+[ethers.js](https://github.com/ethers-io/ethers.js/)
 
-Contribution: 2022-05-28 20:01
-
-Contribution: 2022-05-28 20:02
-
-Contribution: 2022-05-28 20:03
-
-Contribution: 2022-06-02 20:00
-
-Contribution: 2022-06-02 20:01
-
-Contribution: 2022-06-02 20:02
-
-Contribution: 2022-06-02 20:03
-
-Contribution: 2022-06-03 20:00
-
-Contribution: 2022-06-03 20:01
-
-Contribution: 2022-06-04 20:00
-
-Contribution: 2022-06-07 20:00
-
-Contribution: 2022-06-07 20:01
-
-Contribution: 2022-06-07 20:02
-
-Contribution: 2022-06-10 20:00
-
-Contribution: 2022-06-10 20:01
-
-Contribution: 2022-06-10 20:02
-
-Contribution: 2022-06-10 20:03
-
-Contribution: 2022-06-11 20:00
-
-Contribution: 2022-06-11 20:01
-
-Contribution: 2022-06-11 20:02
-
-Contribution: 2022-06-11 20:03
-
-Contribution: 2022-06-12 20:00
-
-Contribution: 2022-06-12 20:01
-
-Contribution: 2022-06-12 20:02
-
-Contribution: 2022-06-12 20:03
-
-Contribution: 2022-06-15 20:00
-
-Contribution: 2022-06-15 20:01
-
-Contribution: 2022-06-18 20:00
-
-Contribution: 2022-06-18 20:01
-
-Contribution: 2022-06-18 20:02
-
-Contribution: 2022-06-18 20:03
-
-Contribution: 2022-06-19 20:00
-
-Contribution: 2022-06-20 20:00
-
-Contribution: 2022-06-20 20:01
-
-Contribution: 2022-06-20 20:02
-
-Contribution: 2022-06-22 20:00
-
-Contribution: 2022-06-22 20:01
-
-Contribution: 2022-06-22 20:02
-
-Contribution: 2022-06-23 20:00
-
-Contribution: 2022-06-29 20:00
-
-Contribution: 2022-06-29 20:01
-
-Contribution: 2022-07-01 20:00
-
-Contribution: 2022-07-01 20:01
-
-Contribution: 2022-07-01 20:02
-
-Contribution: 2022-07-01 20:03
-
-Contribution: 2022-07-12 20:00
-
-Contribution: 2022-07-12 20:01
-
-Contribution: 2022-07-12 20:02
-
-Contribution: 2022-07-12 20:03
-
-Contribution: 2022-07-15 20:00
-
-Contribution: 2022-07-15 20:01
-
-Contribution: 2022-07-15 20:02
-
-Contribution: 2022-07-19 20:00
-
-Contribution: 2022-07-19 20:01
-
-Contribution: 2022-07-19 20:02
-
+[TypeChain](https://github.com/dethcrypto/TypeChain)
