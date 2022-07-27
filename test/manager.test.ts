@@ -69,9 +69,13 @@ describe("Crea2ors Manager test", () => {
       await crea2.connect(alice).approve(cr2NFT.address, fund);
       await cr2NFT
         .connect(alice)
-        .redeem(alice.address, 0, "https://github.com", 100, fund, 1, 12, bob.address);
+        .redeem(alice.address, true, 3, "https://github.com", 100, fund, 1, 12, bob.address);
+      await crea2.connect(alice).approve(cr2NFT.address, fund);
+      await cr2NFT
+        .connect(alice)
+        .redeem(alice.address, false, 0, "https://github.com", 100, fund, 1, 12, bob.address);
 
-      expect(await cr2NFT.connect(alice).balanceOf(alice.address, 0)).to.equal(1);
+      expect(await cr2NFT.connect(alice).balanceOf(alice.address, 0)).to.equal(2);
     });
   });
 
