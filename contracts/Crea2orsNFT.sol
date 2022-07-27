@@ -99,6 +99,7 @@ contract Crea2orsNFT is ERC1155, Ownable, EIP712 {
 
   function redeem(
     address redeemer,
+    bool bFirst,
     uint256 tokenId,
     string memory metaUri,
     uint256 initialSupply,
@@ -113,15 +114,15 @@ contract Crea2orsNFT is ERC1155, Ownable, EIP712 {
     require(mintCount != 0, "Can not mint Zero count");
     require(cr2Contract.allowance(msg.sender, address(this)) >= mintPrice, "allowance is less");
 
-    if (curMintedSupplies[tokenId] == 0) {
+    if (bFirst == true) {
       initialSupplies[_currentTokenID] = initialSupply;
       royaltyAddresses[_currentTokenID] = royaltyAddress;
       royaltyFees[_currentTokenID] = royaltyFee;
       metaDataUris[_currentTokenID] = metaUri;
       _mint(redeemer, _currentTokenID, mintCount, "");
       curMintedSupplies[_currentTokenID] += mintCount;
-      _currentTokenID++;
       emit LazyMinted(_currentTokenID);
+      _currentTokenID++;
     } else {
       require(
         curMintedSupplies[tokenId] + mintCount < initialSupplies[tokenId],
